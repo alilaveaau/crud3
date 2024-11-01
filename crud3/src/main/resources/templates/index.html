@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="~{layouts/main :: htmlhead}"></head>
+
+<body>
+
+<nav th:replace="~{layouts/main :: navigation}"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="mt-5">CRUD-приложение</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <a th:href="@{/users}" class="btn btn-secondary">Get user list</a>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{layouts/main :: footer}"></footer>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="~{layouts/main :: htmlhead}"></head>
+
+<body>
+
+<nav th:replace="~{layouts/main :: navigation}"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="mt-5">CRUD-приложение</h1>
+            <p class="lead">Создание нового пользователя</p>
+        </div>
+    </div>
+    <form th:method="POST" th:action="@{/users}" th:object="${user}">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="firstName">Имя</label>
+                <input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="Enter user name" required>
+                <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="lastName">Фамилия</label>
+                <input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="Enter last name">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="email">e-mail</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Enter email" required>
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></div>
+            </div>
+        </div>
+
+        <button class="btn btn-secondary" type="submit" th:text="*{id} != null ? 'Save' : 'Create'"></button>
+        <a class="btn btn-light border-dark" th:href="@{/users}">Cancel</a>
+    </form>
+</div>
+
+<footer th:replace="~{layouts/main :: footer}"></footer>
+
+</body>
+</html>
